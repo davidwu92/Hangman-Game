@@ -20,40 +20,46 @@ let gSoFar = ``
     let solution = wordbank[random]     //"solution" is the array for the chosen word.
     let unsolved = solution.slice(0)    //"unsolved": independent array of the unsolved characters
         for(let i=0; i<unsolved.length;i++) {
-            unsolved[i] = "_ "
+            unsolved[i] = " __ "
         }
-console.log(solution) //delete later
-console.log(unsolved) //delete later
     let word = function stringify() {       //"word" = string of unsolved word sent to HTML.
         let string = ''
         for (let i=0; i<unsolved.length; i++) {
             string = string + unsolved[i]
         }
         return string
-        }
+        }        
+console.log(solution) //delete later
+console.log(unsolved) //delete later
 console.log(word()) //delete later
-    document.getElementById("word").textContent=word()
+    
+document.getElementById("word").textContent=word()
 
+//defining the function to check if you won:
+    let isEqual = function(solution, unsolved) {
+        
+        
+        return false
+    }
 
 //Now accepting key inputs
 document.onkeyup = function guess (event) {
  if (event.keyCode >=65 && event.keyCode <= 90) { //ensures that only letters are guesses
-    
-    //if the pressed key is in the solution array
-    if (solution.includes(event.key)){            
-        console.log("nice")
 
-
-
-
-
-
-
-        
+    if (solution.includes(event.key)){      //if the pressed key is in the solution array...
+        for (let i=0; i<unsolved.length; i++) {
+            if (solution[i]===event.key) {
+                unsolved[i] = event.key         //changes unsolved array to include letters
+                document.getElementById("word").textContent=word()
+                    if(isEqual(solution, unsolved)) { //CHECK IF USER WON using function isEqual
+                        alert("Good job! Let's try another!")
+                        // restart()
+                    }
+            }
+        }
     } 
 
-    //guess not in the word
-    else {
+    else {  //guess not in the word                                  
         if(gLeft!==1) {  //still have more guesses
             gLeft = gLeft - 1
             document.getElementById('gLeft').textContent='Guesses left: ' + gLeft
