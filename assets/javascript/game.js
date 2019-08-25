@@ -31,7 +31,49 @@ console.log(unsolved) //delete later
         }
         return string
         }
-console.log(word())
+console.log(word()) //delete later
     document.getElementById("word").textContent=word()
 
 
+//Now accepting key inputs
+document.onkeyup = function guess (event) {
+ if (event.keyCode >=65 && event.keyCode <= 90) { //ensures that only letters are guesses
+    
+    //if the pressed key is in the solution array
+    if (solution.includes(event.key)){            
+        console.log("nice")
+
+
+
+
+
+
+
+        
+    } 
+
+    //guess not in the word
+    else {
+        if(gLeft!==1) {  //still have more guesses
+            gLeft = gLeft - 1
+            document.getElementById('gLeft').textContent='Guesses left: ' + gLeft
+            gSoFar = gSoFar + event.key
+            document.getElementById('gSoFar').textContent='Guesses so far: ' + gSoFar
+        }
+
+        else{ //no more guesses: user lost game
+            losses = losses + 1
+            console.log("losses: " + losses) //checking if wins is changing to 1
+            alert(`Sorry! You're out of guesses!`)
+            // restart()
+        }
+    }
+
+
+
+
+
+
+
+ }
+}
