@@ -29,8 +29,8 @@ let solution = wordbank[random]     //"solution" is the array for the chosen wor
         return string
         }
 document.getElementById("word").textContent=word()
-document.getElementById("gLeft").textContent=gLeft
-document.getElementById("gSoFar").textContent=gSoFar
+document.getElementById("gLeft").textContent=`Guesses Left: ${gLeft}`
+document.getElementById("gSoFar").textContent=`Guesses so Far: ${gSoFar}`
 
 //NEW GAME: RESTART FUNCTION HERE
 const restart = function(){
@@ -50,8 +50,10 @@ const restart = function(){
     gLeft = 10
     gSoFar = ``
 document.getElementById("word").textContent=word()
-document.getElementById("gLeft").textContent=gLeft
-document.getElementById("gSoFar").textContent=gSoFar
+document.getElementById("gLeft").textContent=`Guesses Left: ${gLeft}`
+document.getElementById("gSoFar").textContent=`Guesses so Far: ${gSoFar}`
+document.getElementById("wins").textContent=`Wins: ${wins}`
+document.getElementById("losses").textContent=`Losses: ${losses}`
 }
     //defining win-check function:
     let isEqual = function(solution, unsolved) {
