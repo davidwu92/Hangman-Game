@@ -14,10 +14,9 @@ let random = Math.floor(Math.random() * wordbank.length)
 let gLeft = 10
 let gSoFar = ``
 
-//NEW GAME: RESTART FUNCTION HERE
 
-    random = Math.floor(Math.random() *  wordbank.length)
-    let solution = wordbank[random]     //"solution" is the array for the chosen word.
+//DEFINING variables that needa be re-defined upon restarting the game
+let solution = wordbank[random]     //"solution" is the array for the chosen word.
     let unsolved = solution.slice(0)    //"unsolved": independent array of the unsolved characters
         for(let i=0; i<unsolved.length;i++) {
             unsolved[i] = " __ "
@@ -28,13 +27,32 @@ let gSoFar = ``
             string = string + unsolved[i]
         }
         return string
-        }        
-console.log(solution) //delete later
-console.log(unsolved) //delete later
-console.log(word()) //delete later
-    
+        }
 document.getElementById("word").textContent=word()
+document.getElementById("gLeft").textContent=gLeft
+document.getElementById("gSoFar").textContent=gSoFar
 
+//NEW GAME: RESTART FUNCTION HERE
+const restart = function(){
+    random = Math.floor(Math.random() *  wordbank.length)
+    solution = wordbank[random]     //"solution" is the array for the chosen word.
+    unsolved = solution.slice(0)    //"unsolved": independent array of the unsolved characters
+        for(let i=0; i<unsolved.length;i++) {
+            unsolved[i] = " __ "
+        }
+    word = function stringify() {       //"word" = string of unsolved word sent to HTML.
+        let string = ''
+        for (let i=0; i<unsolved.length; i++) {
+            string = string + unsolved[i]
+        }
+        return string
+        }        
+    gLeft = 10
+    gSoFar = ``
+document.getElementById("word").textContent=word()
+document.getElementById("gLeft").textContent=gLeft
+document.getElementById("gSoFar").textContent=gSoFar
+}
     //defining win-check function:
     let isEqual = function(solution, unsolved) {
         for (let k=0; k<50; k++) {
@@ -54,7 +72,10 @@ document.onkeyup = function guess (event) {
                 unsolved[i] = event.key         //changes unsolved array to include letters
                 document.getElementById("word").textContent=word()
                     if(isEqual(solution, unsolved)) { //CHECK IF USER WON using function isEqual
+                        wins = wins + 1
+                        console.log("wins: " + wins) //checking if wins is changing by 1
                         alert("Good job! Let's try another!")
+                        restart()
                     }
             }
         }
@@ -72,7 +93,7 @@ document.onkeyup = function guess (event) {
             losses = losses + 1
             console.log("losses: " + losses) //checking if wins is changing to 1
             alert(`Sorry! You're out of guesses!`)
-            // restart()
+            restart()
         }
     }
 
