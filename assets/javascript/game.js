@@ -35,11 +35,13 @@ console.log(word()) //delete later
     
 document.getElementById("word").textContent=word()
 
-//defining the function to check if you won:
+    //defining win-check function:
     let isEqual = function(solution, unsolved) {
-        
-        
-        return false
+        for (let k=0; k<50; k++) {
+            if (solution[k]!==unsolved[k])
+                return false
+        }        
+        return true
     }
 
 //Now accepting key inputs
@@ -53,7 +55,6 @@ document.onkeyup = function guess (event) {
                 document.getElementById("word").textContent=word()
                     if(isEqual(solution, unsolved)) { //CHECK IF USER WON using function isEqual
                         alert("Good job! Let's try another!")
-                        // restart()
                     }
             }
         }
