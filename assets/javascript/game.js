@@ -3,8 +3,15 @@ const carbon = [`c`, `a`, `r`, `b`, `o`, `n`]
 const oxygen = [`o`, `x`, `y`, `g`, `e`, `n`]
 const nitrogen = [`n`, `i`, `t`, `r`, `o`, `g`, `e`, `n`]
 const chlorine = [`c`, `h`, `l`, `o`, `r`, `i`, `n`, `e`]
+const fluorine = [`f`, `l`, `u`, `o`, `r`, `i`, `n`, `e`]
+const plutonium = [`p`, `l`, `u`, `t`, `o`, `n`, `i`, `u`, `m`]
+const uranium = [`u`, `r`, `a`, `n`, `i`, `u`, `m`]
+const sulfur = [`s`, `u`, `l`, `f`, `u`, `r`]
+const helium = [`h`, `e`, `l`, `i`, `u`, `m`]
+const hydrogen = [`h`, `y`, `d`, `r`, `o`, `g`, `e`, `n`]
+const boron = [`b`, `o`, `r`, `o`, `n`]
 
-const wordbank = [carbon, oxygen, nitrogen, chlorine]
+const wordbank = [carbon, oxygen, nitrogen, chlorine, plutonium, uranium, sulfur, helium, hydrogen, boron]
 
 
 //set up initial variables
@@ -98,12 +105,5 @@ document.onkeyup = function guess (event) {
             restart()
         }
     }
-
-
-
-
-
-
-
  }
 }
