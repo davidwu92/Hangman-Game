@@ -38,7 +38,13 @@ let unsolved;
 // document.getElementById("word").textContent=word()
 // document.getElementById("gLeft").textContent=`Guesses Left: ${gLeft}`
 // document.getElementById("gSoFar").textContent=`Guesses so Far: ${gSoFar}`
-
+let word = function stringify() {       //"word" = string of unsolved word sent to HTML.
+          let string = ''
+          for (let i=0; i<unsolved.length; i++) {
+              string = string + unsolved[i]
+          }
+        return string
+        }
 //NEW GAME: RESTART FUNCTION HERE
 const restart = function(){
     let random = Math.floor(Math.random() *  wordbank.length)
@@ -46,13 +52,6 @@ const restart = function(){
     unsolved = solution.slice(0)    //"unsolved": independent array of the unsolved characters
         for(let i=0; i<unsolved.length;i++) {
             unsolved[i] = " __ "
-        }
-    let word = function stringify() {       //"word" = string of unsolved word sent to HTML.
-        let string = ''
-        for (let i=0; i<unsolved.length; i++) {
-            string = string + unsolved[i]
-        }
-        return string
         }        
     gLeft = 10
     gSoFar = ``
