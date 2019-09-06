@@ -17,37 +17,37 @@ const wordbank = [carbon, oxygen, nitrogen, chlorine, plutonium, uranium, sulfur
 //set up initial variables
 let wins = 0
 let losses = 0
-let random = Math.floor(Math.random() * wordbank.length)
+// let random = Math.floor(Math.random() * wordbank.length)
 let gLeft = 10
 let gSoFar = ``
-
-
+let solution;
+let unsolved;
 //DEFINING variables that needa be re-defined upon restarting the game
-let solution = wordbank[random]     //"solution" is the array for the chosen word.
-    let unsolved = solution.slice(0)    //"unsolved": independent array of the unsolved characters
-        for(let i=0; i<unsolved.length;i++) {
-            unsolved[i] = " __ "
-        }
-    let word = function stringify() {       //"word" = string of unsolved word sent to HTML.
-        let string = ''
-        for (let i=0; i<unsolved.length; i++) {
-            string = string + unsolved[i]
-        }
-        return string
-        }
-document.getElementById("word").textContent=word()
-document.getElementById("gLeft").textContent=`Guesses Left: ${gLeft}`
-document.getElementById("gSoFar").textContent=`Guesses so Far: ${gSoFar}`
-
+// let solution = wordbank[random]     //"solution" is the array for the chosen word.
+// let unsolved = solution.slice(0)    //"unsolved": independent array of the unsolved characters
+// for(let i=0; i<unsolved.length;i++) {
+//   unsolved[i] = " __ "
+// }
+// let word = function stringify() {       //"word" = string of unsolved word sent to HTML.
+//   let string = ''
+//     for (let i=0; i<unsolved.length; i++) {
+//         string = string + unsolved[i]
+//       }
+//     return string
+// }
+// document.getElementById("word").textContent=word()
+// document.getElementById("gLeft").textContent=`Guesses Left: ${gLeft}`
+// document.getElementById("gSoFar").textContent=`Guesses so Far: ${gSoFar}`
+restart()
 //NEW GAME: RESTART FUNCTION HERE
 const restart = function(){
-    random = Math.floor(Math.random() *  wordbank.length)
+    let random = Math.floor(Math.random() *  wordbank.length)
     solution = wordbank[random]     //"solution" is the array for the chosen word.
     unsolved = solution.slice(0)    //"unsolved": independent array of the unsolved characters
         for(let i=0; i<unsolved.length;i++) {
             unsolved[i] = " __ "
         }
-    word = function stringify() {       //"word" = string of unsolved word sent to HTML.
+    let word = function stringify() {       //"word" = string of unsolved word sent to HTML.
         let string = ''
         for (let i=0; i<unsolved.length; i++) {
             string = string + unsolved[i]
