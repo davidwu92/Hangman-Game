@@ -38,7 +38,7 @@ let unsolved;
 // document.getElementById("word").textContent=word()
 // document.getElementById("gLeft").textContent=`Guesses Left: ${gLeft}`
 // document.getElementById("gSoFar").textContent=`Guesses so Far: ${gSoFar}`
-restart()
+
 //NEW GAME: RESTART FUNCTION HERE
 const restart = function(){
     let random = Math.floor(Math.random() *  wordbank.length)
@@ -70,7 +70,7 @@ document.getElementById("losses").textContent=`Losses: ${losses}`
         }        
         return true
     }
-
+restart()
 //Now accepting key inputs
 document.onkeyup = function guess (event) {
  if (event.keyCode >=65 && event.keyCode <= 90) { //ensures that only letters are guesses
